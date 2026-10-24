@@ -1,0 +1,100 @@
+[project]
+name = "mirofish-backend"
+version = "0.1.0"
+description = "MiroFish - 简洁通用的群体智能引擎，预测万物"
+requires-python = ">=3.11,<3.13"
+license = { text = "AGPL-3.0" }
+authors = [
+    { name = "MiroFish Team" }
+]
+
+dependencies = [
+    # 核心框架
+    "flask>=3.0.0",
+    "flask-cors>=6.0.0",
+    
+    # LLM 相关
+    "openai>=1.0.0",
+    
+    # Zep Cloud
+    "zep-cloud==3.25.0",
+    "httpx>=0.27.0",
+    
+    # OASIS 社交媒体模拟
+    "camel-oasis==0.2.5",
+    "camel-ai==0.2.78",
+    
+    # 文件处理
+    "PyMuPDF>=1.24.0",
+    # 编码检测（支持非UTF-8编码的文本文件）
+    "charset-normalizer>=3.0.0",
+    "chardet>=5.0.0",
+    
+    # 工具库
+    "python-dotenv>=1.0.0",
+    "pydantic>=2.0.0",
+
+    # 推理引擎：twitter 推荐时间线的 twhin 模型（1.08 GB / 279M 参数）用它跑。
+    # 必须**显式**写成直接依赖并钉死索引：默认索引（清华镜像）的 Windows 轮子是
+    # CPU-only 构建，`torch.cuda.is_available()` 会是 False，4000 条语料的每轮编码
+    # 就让机器卡死一次（实测，见 .tools/provision-torch.py 与掩盖台账 N-47）。
+    "torch==2.9.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "pipreqs>=0.5.0",
+]
+# 本地图谱后端（ZEP_BACKEND=graphiti）。安装：uv sync --extra graphiti
+# kuzu 为嵌入式图数据库，Windows 有 cp312 轮子，无需 JVM / Docker / 常驻服务。
+graphiti = [
+    "graphiti-core[kuzu]==0.30.2",
+]
+
+[tool.uv]
+# graphiti-core 的核心依赖要求 neo4j>=5.26.0，而 camel-oasis==0.2.5 硬钉 neo4j==5.23.0。
+# 覆盖是安全的：OASIS 只在 social_agent/agent_graph.py 里用到 neo4j，且 MiroFish 从不
+# 构造 Neo4jConfig，Neo4jHandler 永不被实例化（social_platform/config/neo4j.py 仅为 dataclass）。
+override-dependencies = ["neo4j>=5.26.0"]
+
+# torch 单独走 PyTorch 官方索引：默认索引（清华镜像）只有 CPU-only 轮子。
+# `explicit = true` 表示这个索引**只**用来取下面 [tool.uv.sources] 指到它的包，
+# 其它依赖仍走默认索引——否则同一个包会在两个索引之间产生歧义。
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu128" }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+]
+
+[tool.pytest.ini_options]
+# 测试临时文件留在项目目录里：
+# 不再往 %TEMP% 或 backend/ 根部堆 `pytest-of-0/pytest-NN`（实测曾累积 633 项 / 728 KB，
+# 旧目录还会在每次启动时被扫描）。`--basetemp` 固定到项目内的 `.pytest-tmp`；
+# pytest 会在**每次运行开始时**清空 basetemp，所以残留最多保留到下一次运行。
+#
+# 以下四个是之前**受限模式**（低完整性令牌）留下的目录，Windows 权限已损坏：所有者是
+# 另一个账户、当前账户没有"修改权限"的权利，连列目录/删除都拒绝（2026-10-24 实查）：
+#   .pytest-tmp/、tmphtguojqd/、tmpofklj4ly/、.pytest_cache/
+# 它们里面没有任何测试，但 pytest 从上往下走时会因 PermissionError 中断**整个**收集。
+# 所以：两个 tmp* 从收集里排除，basetemp/cache 换到新名字（旧目录不再被碰）。
+# 这不是掩盖——真正的修复是用管理员身份删掉那四个目录；删掉之后这些改名都可以改回去。
+addopts = "--basetemp=.pytest-tmp-fa --ignore=tmphtguojqd --ignore=tmpofklj4ly"
+cache_dir = ".pytest-cache-fa"
+tmp_path_retention_policy = "none"
+
+[tool.hatch.build.targets.wheel]
+packages = ["app"]

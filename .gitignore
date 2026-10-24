@@ -1,0 +1,82 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# 环境变量（保护敏感信息）
+.env
+.env.local
+.env.*.local
+.env.development
+.env.test
+.env.production
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+.eggs/
+*.egg-info/
+dist/
+build/
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 测试
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Cursor
+.cursor/
+.claude/
+
+# 文档与测试程序
+mydoc/
+mytest/
+
+# 日志文件
+backend/logs/
+*.log
+
+# 上传文件
+backend/uploads/
+
+# pytest 临时目录（测试产物留在项目内，但不入库）
+pytest-of-*/
+backend/pytest-of-*/
+
+# 本地运行 / 测试临时目录（.tmp 里有探针脚本，.uv-tmp 是 uv 锁，
+# backend/.pytest-tmp* 与 backend/tmp* 是测试残留；都留在本机，不入库）
+.tmp/
+.uv-tmp/
+backend/.pytest-tmp*/
+backend/tmp*/
+
+# 本地工具与模型：只入库 provisioning 步骤，不入库字节
+# （`.tools/` 中的本机助手仍不随仓库走；公开入口是 scripts/provision-*.py）
+.tools/bin/
+# 项目自有模型目录（F18）：<项目>/models/<name>/ + model.json 清单；
+# 克隆后靠 `scripts/provision-models.py --fetch` 重建，不随仓库搬运 1 GB 权重
+models/
+# GPU 版 torch 的 wheel（2.7 GB）：只入库 provisioning 步骤与 SHA256，不入库字节
+.tools/artifacts/
+# 历史遗留：F18 之前的 HuggingFace hub 缓存布局（已废弃，目录已删除）
+.hf-cache/
+
+# Docker 数据
+data/
