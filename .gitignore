@@ -68,15 +68,18 @@ backend/.pytest-tmp*/
 backend/tmp*/
 
 # 本地工具与模型：只入库 provisioning 步骤，不入库字节
-# （`.tools/` 中的本机助手仍不随仓库走；公开入口是 scripts/provision-*.py）
-.tools/bin/
+# （`.tools/` 是本机助手、探针和 wheel 缓存，不随仓库走；公开入口是 scripts/provision-*.py）
+.tools/
 # 项目自有模型目录（F18）：<项目>/models/<name>/ + model.json 清单；
 # 克隆后靠 `scripts/provision-models.py --fetch` 重建，不随仓库搬运 1 GB 权重
 models/
-# GPU 版 torch 的 wheel（2.7 GB）：只入库 provisioning 步骤与 SHA256，不入库字节
-.tools/artifacts/
 # 历史遗留：F18 之前的 HuggingFace hub 缓存布局（已废弃，目录已删除）
 .hf-cache/
+
+# 项目内工具链缓存（只在本机，不入库）
+.uv-cache/
+.python/
+.npm-cache/
 
 # Docker 数据
 data/
