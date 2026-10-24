@@ -37,7 +37,7 @@ dependencies = [
     # 推理引擎：twitter 推荐时间线的 twhin 模型（1.08 GB / 279M 参数）用它跑。
     # 必须**显式**写成直接依赖并钉死索引：默认索引（清华镜像）的 Windows 轮子是
     # CPU-only 构建，`torch.cuda.is_available()` 会是 False，4000 条语料的每轮编码
-    # 就让机器卡死一次（实测，见 .tools/provision-torch.py 与掩盖台账 N-47）。
+    # 就让机器卡死一次（实测，见 scripts/provision-torch.py 与掩盖台账 N-47）。
     "torch==2.9.1",
 ]
 

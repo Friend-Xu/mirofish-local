@@ -14,7 +14,7 @@
 4. 显存/加载失败 → `RecsysModelUnavailable`，且保留原始异常（不悄悄退回 CPU 跑）；
 5. 测量脚本**不许再吃满 CPU/内存**（默认线程数小于逻辑核、有 padded-token 上限）。
 
-真实的 GPU 端到端由实跑证明（`.tools/repro-twitter-recsys.py --arm project-module`：
+真实的 GPU 端到端由实跑证明（组件级重放工具 `--arm project-module`：
 整轮 `update_rec_table()` 6.46 s → **0.94 s**），静态断言不替代它。
 """
 
@@ -305,7 +305,7 @@ def test_cost_tool_keeps_its_safety_limits():
     ② 同一规模在 GPU 上把 8 GB 的卡打成 `GPU is lost`（只能重启恢复，发生两次）。
     """
 
-    source = (BACKEND_DIR.parent / ".tools" / "measure-recsys-round-cost.py").read_text(
+    source = (BACKEND_DIR.parent / "scripts" / "measure-recsys-round-cost.py").read_text(
         encoding="utf-8"
     )
     assert "--max-padded-tokens" in source
@@ -337,7 +337,7 @@ def test_cost_tool_chunks_the_corpus_like_production():
     1.93 s 变成 23.55 s。这条断言锁住"分块那一层不许被绕过"。
     """
 
-    source = (BACKEND_DIR.parent / ".tools" / "measure-recsys-round-cost.py").read_text(
+    source = (BACKEND_DIR.parent / "scripts" / "measure-recsys-round-cost.py").read_text(
         encoding="utf-8"
     )
     assert "generate_post_vector(model, tokenizer, texts," in source

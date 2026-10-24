@@ -524,7 +524,7 @@ const initObserver = () => {
 
       // 折叠态被看到足够多才自动展开。展开长高会让比例往下掉，
       // 那次向下的穿越落在这个分支之外，不会被当成“离开视口”。
-      // 实测见 .tools/frontend-history-cards/evidence.md。
+      // 实测记录留在开发机。
       if (ratio >= EXPAND_RATIO && !foldedByUser) {
         scheduleExpanded(true)
       }

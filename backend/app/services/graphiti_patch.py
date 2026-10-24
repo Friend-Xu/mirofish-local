@@ -145,7 +145,7 @@ async def rebuild_kuzu_fulltext_indexes_async(driver: Any) -> bool:
     对**已存在**节点做 SET/MERGE 时，索引维护在 C++ 层触发 access violation，
     直接杀死整个后端进程（没有 Python 异常、没有 atexit，见 `掩盖台账.md` N-24）。
 
-    离线二分证据（`.tools/_kuzu_repro.py`，对图谱副本操作）：
+    离线二分证据（本地复现工具，对图谱副本操作）：
     * `MATCH (n:Entity {uuid: $uuid}) SET n.summary = $summary` → 崩（两个不同 uuid 都崩）；
     * 同一句，先 `DROP_FTS_INDEX` 掉两个索引 → 成功；
     * 同样的数据 `CREATE_FTS_INDEX` 重建后再执行 → 成功；

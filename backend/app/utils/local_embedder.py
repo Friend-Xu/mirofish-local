@@ -69,11 +69,11 @@ def _require_model_dir(model_path: str) -> str:
         raise EmbeddingModelMissingError(
             f"本地 embedding 模型目录不存在: {resolved}（配置 GRAPHITI_EMBEDDING_MODEL_PATH）\n"
             "准备步骤（在项目目录内执行，模型留在项目里）：\n"
-            "  backend\\.venv\\Scripts\\python.exe .tools\\provision-models.py "
+            "  backend\\.venv\\Scripts\\python.exe scripts\\provision-models.py "
             "--fetch bge-small-zh-v1.5\n"
-            "  backend\\.venv\\Scripts\\python.exe .tools\\provision-models.py --verify\n"
+            "  backend\\.venv\\Scripts\\python.exe scripts\\provision-models.py --verify\n"
             "（默认走 hf-mirror：HF 直连在本机不通，这是已知前提）\n"
-            "详见 LOCAL-DEPLOY.md「本地模型」一节。"
+            "详见 DEPLOYMENT.md §4「模型与推理引擎」。"
         )
     if not os.listdir(resolved):
         raise EmbeddingModelMissingError(f"本地 embedding 模型目录为空: {resolved}")

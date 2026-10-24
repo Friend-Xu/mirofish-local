@@ -21,7 +21,7 @@ twitter 的推荐模型（`Twitter/twhin-bert-base`）原先躺在 HuggingFace �
   **一律抛 `ModelFilesUnavailable`**，并在信息里写清缺什么、期望值与实际值；
 * 目录里出现清单未声明的第二份权重文件（`*.safetensors` / `*.bin`）也抛：
   那意味着加载的可能不是清单里那份；
-* 本模块**不下载、不回退**。供应由 `.tools/provision-models.py` 负责，
+* 本模块**不下载、不回退**。供应由 `scripts/provision-models.py` 负责，
   它同时是版本锁（repo + revision + 文件清单）。
 """
 
@@ -50,9 +50,9 @@ WEIGHT_SUFFIXES = (".safetensors", ".bin")
 #: 校验失败时给出的供应入口（写在这里，保证每条错误信息都能直接照做）
 PROVISION_HINT = (
     "供应/校验入口：\n"
-    "  backend\\.venv\\Scripts\\python.exe .tools\\provision-models.py --verify\n"
-    "  backend\\.venv\\Scripts\\python.exe .tools\\provision-models.py --fetch <name>\n"
-    "见 LOCAL-DEPLOY.md「本地模型」一节。项目按离线运行，不会在运行时下载。"
+    "  backend\\.venv\\Scripts\\python.exe scripts\\provision-models.py --verify\n"
+    "  backend\\.venv\\Scripts\\python.exe scripts\\provision-models.py --fetch <name>\n"
+    "见 DEPLOYMENT.md §4「模型与推理引擎」。项目按离线运行，不会在运行时下载。"
 )
 
 

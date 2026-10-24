@@ -6,7 +6,7 @@
 一律抛 `ModelFilesUnavailable`——不下载、不回退、不给默认值。
 
 真实载荷（1.08 GB 的 twhin + 92 MB 的 bge）由
-`.tools/provision-models.py --verify` 在闸门里校验，测试不碰它：
+`scripts/provision-models.py --verify` 在闸门里校验，测试不碰它：
 测试绑死大文件会让"改一行代码"变成"读 1 GB 磁盘"。
 """
 

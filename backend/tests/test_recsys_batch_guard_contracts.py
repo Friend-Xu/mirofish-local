@@ -1,6 +1,6 @@
 """批大小守卫契约（掩盖台账 N-48）：**OASIS 写死的 1000 在 8 GB 卡上装不下**。
 
-实测背景（`.tools/measure-recsys-round-cost.py`，4035 条语料、批内最长 267 token）：
+实测背景（`scripts/measure-recsys-round-cost.py`，4035 条语料、批内最长 267 token）：
 
 * batch 30 / 32 / 64 / 100 → 峰值 1648 / 1684 / 2277 / 2945 MB（安全）；
 * batch 256 / 512 → 把卡打成 `GPU is lost`（只能重启恢复）；

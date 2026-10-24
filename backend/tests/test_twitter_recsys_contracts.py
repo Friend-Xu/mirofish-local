@@ -1,6 +1,6 @@
 """Twitter 推荐时间线契约测试（掩盖台账 N-46 / F17 / F18）。
 
-实测背景（`.tools/repro-twitter-recsys.py`，证据在 `backend/uploads/_diagnostics/`）：
+实测背景（开发机组件级重放，证据在 `backend/uploads/_diagnostics/`）：
 
 * OASIS 原先用**仓库名**加载 `Twitter/twhin-bert-base`；transformers 只要
   `vocab_size > 100000`（本模型是 250002）且入参不是本地目录，就会调 `model_info()`
