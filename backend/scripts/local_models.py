@@ -52,7 +52,7 @@ PROVISION_HINT = (
     "供应/校验入口：\n"
     "  backend\\.venv\\Scripts\\python.exe scripts\\provision-models.py --verify\n"
     "  backend\\.venv\\Scripts\\python.exe scripts\\provision-models.py --fetch <name>\n"
-    "见 DEPLOYMENT.md §4「模型与推理引擎」。项目按离线运行，不会在运行时下载。"
+    "见 docs/DEPLOYMENT.md §4「模型与推理引擎」。项目按离线运行，不会在运行时下载。"
 )
 
 

@@ -2,7 +2,7 @@
 
 **MiroFish 的本地优先分支：Graphiti + 嵌入式 Kuzu、本地模型、不依赖 Zep Cloud，报告区分事实与推断并可核对引用。**
 
-[English](README.md) · [部署手册](DEPLOYMENT.md) · [上游 MiroFish](https://github.com/666ghj/MiroFish)
+[English](README.md) · [文档索引](docs/README.md) · [部署手册](docs/DEPLOYMENT.md) · [上游 MiroFish](https://github.com/666ghj/MiroFish)
 
 ![License: AGPL-3.0](https://img.shields.io/badge/license-AGPL--3.0-blue)
 ![Platform: Windows 11](https://img.shields.io/badge/platform-Windows%2011-lightgrey)
@@ -92,8 +92,8 @@ scripts\start-local.cmd
 - <http://localhost:5001/health> → `{"service":"MiroFish Backend","status":"ok"}`
 - <http://localhost:3000/> → 200
 
-完整的配置、备份/重置和故障排查见 [DEPLOYMENT.md](DEPLOYMENT.md)。
-工具链/锁/模型哈希的维护者说明见 [PROJECT_SETUP.md](PROJECT_SETUP.md)。
+完整的配置、备份/重置和故障排查见 [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)。
+工具链/锁/模型哈希的维护者说明见 [docs/PROJECT_SETUP.md](docs/PROJECT_SETUP.md)。
 
 ## 部署时最容易踩的坑
 

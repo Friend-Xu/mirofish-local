@@ -1,6 +1,6 @@
 # UPSTREAM CLOUD-MODE COMPOSE FILE ONLY.
 # This pulls the upstream image; it is not the supported way to run MiroFish Local
-# with Graphiti/Kuzu + local models. See DEPLOYMENT.md.
+# with Graphiti/Kuzu + local models. See docs/DEPLOYMENT.md.
 services:
   mirofish:
     image: ghcr.io/666ghj/mirofish:latest

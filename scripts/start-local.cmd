@@ -27,7 +27,7 @@ if not exist "%PY%" (
     echo     Run:
     echo       cd backend
     echo       uv sync --frozen --extra graphiti
-    echo     See DEPLOYMENT.md for details.
+    echo     See docs\DEPLOYMENT.md for details.
     echo.
     pause
     exit /b 1

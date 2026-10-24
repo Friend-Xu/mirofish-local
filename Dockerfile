@@ -1,6 +1,6 @@
 # UPSTREAM CLOUD-MODE IMAGE ONLY.
 # MiroFish Local (ZEP_BACKEND=graphiti) is not built or validated by this file:
-# it needs the local models, CUDA torch, and the embedded Kuzu graph. See DEPLOYMENT.md.
+# it needs the local models, CUDA torch, and the embedded Kuzu graph. See docs/DEPLOYMENT.md.
 FROM python:3.11
 
 # 安装 Node.js （满足 >=18）及必要工具

@@ -2,7 +2,7 @@
 
 **A local-first fork of MiroFish: Graphiti + embedded Kuzu, local models, no Zep Cloud, and traceable reports.**
 
-[中文完整说明](README-ZH.md) · [Deployment guide](DEPLOYMENT.md) · [Upstream MiroFish](https://github.com/666ghj/MiroFish)
+[中文完整说明](README-ZH.md) · [Documentation](docs/README.md) · [Deployment guide](docs/DEPLOYMENT.md) · [Upstream MiroFish](https://github.com/666ghj/MiroFish)
 
 ![License: AGPL-3.0](https://img.shields.io/badge/license-AGPL--3.0-blue)
 ![Platform: Windows 11](https://img.shields.io/badge/platform-Windows%2011-lightgrey)
@@ -95,8 +95,8 @@ Self-check:
 - <http://localhost:3000/> → 200
 
 Full steps, configuration details, backup/reset, and the troubleshooting table are in
-[DEPLOYMENT.md](DEPLOYMENT.md). Maintainer notes for the toolchain and locks are in
-[PROJECT_SETUP.md](PROJECT_SETUP.md).
+[docs/DEPLOYMENT.md](docs/DEPLOYMENT.md). Maintainer notes for the toolchain and locks are in
+[docs/PROJECT_SETUP.md](docs/PROJECT_SETUP.md).
 
 ## Important deployment notes
 

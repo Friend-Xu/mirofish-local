@@ -73,7 +73,7 @@ def _require_model_dir(model_path: str) -> str:
             "--fetch bge-small-zh-v1.5\n"
             "  backend\\.venv\\Scripts\\python.exe scripts\\provision-models.py --verify\n"
             "（默认走 hf-mirror：HF 直连在本机不通，这是已知前提）\n"
-            "详见 DEPLOYMENT.md §4「模型与推理引擎」。"
+            "详见 docs/DEPLOYMENT.md §4「模型与推理引擎」。"
         )
     if not os.listdir(resolved):
         raise EmbeddingModelMissingError(f"本地 embedding 模型目录为空: {resolved}")

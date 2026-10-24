@@ -198,7 +198,7 @@ def resolve_uv(explicit: str | None) -> pathlib.Path:
     raise SystemExit(
         f"项目内默认 uv 不存在：{DEFAULT_UV}\n"
         "请传 --uv <uv.exe 的绝对路径> 或设置 MIROFISH_UV；"
-        "安装 uv 见 DEPLOYMENT.md 的『工具链』一节。"
+        "安装 uv 见 docs/DEPLOYMENT.md 的『工具链』一节。"
     )
 
 
