@@ -278,5 +278,5 @@ cd ..
 
 - 上游：<https://github.com/666ghj/MiroFish>
 - 本分支基于 upstream commit `7657031ac01184afe2cb220f5ee3545573b5e843`。
-- 许可证：**AGPL-3.0**（见 [LICENSE](LICENSE)）。这是社区/本地化分支，不是上游官方仓库。
+- 许可证：**AGPL-3.0**（见 [LICENSE](../LICENSE)）。这是社区/本地化分支，不是上游官方仓库。
 - 修改与分发请保留上游版权与许可证声明；网络服务场景请自行确认 AGPL 义务。
