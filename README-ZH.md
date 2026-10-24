@@ -52,7 +52,7 @@ Linux/macOS、本地模式 Docker。
 ### 安装与启动
 
 ```powershell
-git clone https://github.com/<你的用户名>/mirofish-local.git
+git clone https://github.com/Friend-Xu/mirofish-local.git
 cd mirofish-local
 
 # 后端（本地图谱 extra 必须装）

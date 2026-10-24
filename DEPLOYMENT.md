@@ -25,7 +25,7 @@
 ## 2. 获取代码与工具链
 
 ```powershell
-git clone https://github.com/<你的用户名>/mirofish-local.git
+git clone https://github.com/Friend-Xu/mirofish-local.git
 cd mirofish-local
 ```
 

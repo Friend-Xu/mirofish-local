@@ -53,7 +53,7 @@ frontend Step1–5 browser flow, Linux/macOS, Docker for local mode.
 ### Install and start
 
 ```powershell
-git clone https://github.com/<your-account>/mirofish-local.git
+git clone https://github.com/Friend-Xu/mirofish-local.git
 cd mirofish-local
 
 # Backend (local graph extra is required)
